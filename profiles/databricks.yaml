@@ -7,34 +7,25 @@
 # server that’s different from the tracking server.
 # Profile could be created using https://github.com/databricks/databricks-cli#installation
 model_registry:
-  # registry_uri: "databricks://PROFILE_NAME"
   # FIXME::REQUIRED: Specifies the name of the Registered Model to use when registering a trained
   #                 model to the MLflow Model Registry.
   model_name: "log_reg_titanic"
 
 experiment:
-  # tracking_uri: "sqlite:///metadata/mlflow/mlruns.db"
   name: "/Users/n.leelaudomlipi@accenture.com/titanic_recipes_version"
-  # artifact_location: "./metadata/mlflow/mlartifacts"
 
 # Override the default train / validation / test dataset split ratios
 SPLIT_RATIOS: [0.75, 0.125, 0.125]
 
 INGEST_CONFIG:
   # For different options please read: https://github.com/mlflow/recipes-classification-template#ingest-step
-  using: "spark_sql"
-  sql: "SELECT Pclass, Age, Fare, Sex, Embarked, Survived::int FROM sample_dataset_db.titanic_feature_engineering WHERE Survived IS NOT NULL"
-
   # using: csv
   # loader_method: load_file_as_dataframe
   # location:
   #   - "/dbfs/databricks-datasets/wine-quality/winequality-white.csv"
   #   - "/dbfs/databricks-datasets/wine-quality/winequality-red.csv"
-  # using: "delta"
-  # loader_method: read_spark
-  # location:
-    # - "dbfs:/user/hive/warehouse/sample_dataset_db.db/titanic_feature_engineering"
-  # sql: "SELECT * FROM sample_dataset_db.titanic_feature_engineering WHERE Survived IS NOT NULL"
+  using: "spark_sql"
+  sql: "SELECT Pclass, Age, Fare, Sex, Embarked, Survived::int FROM sample_dataset_db.titanic_feature_engineering WHERE Survived IS NOT NULL"
 
 INGEST_SCORING_CONFIG:
   # For different options please read: https://github.com/mlflow/recipes-classification-template#batch-scoring

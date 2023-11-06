@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "mlflow-recipes-poc"
+version = "0.0.0"
+description = "This is just for poc mlflow recipes."
+authors = ["thanapat.sontayasara <thanapat.sontayasara@accenture.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mlflow = "^2.8.0"
+
+[tool.poetry.group.dev.dependencies]
+pyspark = "3.4.1"
+delta-spark = "2.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
